@@ -35,6 +35,10 @@ async def on_message(message):
             await message.reply("This bot operates strictly via user DMs for privacy reasons. Please send your command in a DM.")
             return
 
+        if ' ' not in message.content:
+            await message.reply("Please include an email with the `!leakcheck` command. The full format is `!leakcheck email@example.com`.")
+            return
+
         _, email = message.content.split()
         results = leakcheck.lookup(email)
         
